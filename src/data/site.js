@@ -91,74 +91,86 @@ export const cabanas = [
         id: 1,
         title: 'Cabaña 1',
         image: cabanaGalleries[1][0].src,
-        people: 'Hasta 4 personas',
-        rooms: '2 dormitorios',
-        pos: 'center 42%'
+        pos: 'center 42%',
+        features: [
+            { icon: 'personas', label: 'Hasta 4 personas' },
+            { icon: 'dormitorios', label: '2 dormitorios' },
+            { icon: 'parrilla', label: 'Parrilla' }
+        ]
     },
     {
         id: 2,
         title: 'Cabaña 2',
         image: cabanaGalleries[2][0].src,
-        people: 'Hasta 4 personas',
-        rooms: '2 dormitorios',
-        pos: 'center 55%'
+        pos: 'center 55%',
+        features: [
+            { icon: 'personas', label: 'Hasta 4 personas' },
+            { icon: 'dormitorios', label: '2 dormitorios' },
+            { icon: 'parrilla', label: 'Parrilla' }
+        ]
     },
     {
         id: 3,
         title: 'Cabaña 3',
         image: cabanaGalleries[3][0].src,
-        people: 'Hasta 3 personas',
-        rooms: '1 dormitorio',
-        pos: 'center 50%'
+        pos: 'center 50%',
+        features: [
+            { icon: 'personas', label: 'Hasta 3 personas' },
+            { icon: 'dormitorios', label: '1 dormitorio' },
+            { icon: 'parrilla', label: 'Parrilla' }
+        ]
     }
 ]
 
-/* Sección unificada Experiencia + Servicios: cada foto lleva encima
-   el título y texto del servicio que representa. */
+/* Servicios destacados: cada uno es una card con foto ampliable.
+   FOTOS PENDIENTES: pileta (usa hero.jpg) y parrilla (usa ext-05.jpg)
+   son placeholders hasta que lleguen las fotos definitivas del complejo. */
 export const experienciaServicios = [
     {
         src: '/images/complejo/ext-01.webp',
         alt: 'Parque arbolado de Cabañas Alcampo con juegos infantiles',
-        title: 'Parque de 1 hectárea',
-        text: 'Mucho espacio verde para jugar y descansar.',
-        pos: 'center 45%',
-        large: true
+        title: 'Parque de 1 ha con juegos',
+        icon: 'parque',
+        text: 'Espacio verde para que los chicos jueguen al aire libre mientras vos descansás.',
+        pos: 'center 48%'
     },
     {
         src: '/images/hero.jpg',
-        alt: 'Piscina de Cabañas Alcampo',
-        title: 'Pileta',
-        text: 'Para pasar el rato en verano, con agua para grandes y chicos.',
-        pos: 'center 72%'
-    },
-    {
-        src: '/images/cabana-1/int-01.webp',
-        alt: 'Dormitorio de cabaña con la cama puesta',
-        title: 'Ropa de cama y toallas',
-        text: 'Llegás con las camas puestas y toallas limpias.',
-        pos: 'center 55%'
+        alt: 'Pileta de Cabañas Alcampo con solárium cercado y reposeras',
+        title: 'Pileta de 11 × 5 m',
+        icon: 'pileta',
+        text: 'Piscina para adultos y niños, con solárium cercado y reposeras.',
+        pos: 'center 62%'
     },
     {
         src: '/images/complejo/ext-03.webp',
-        alt: 'Pérgola y zona de descanso',
-        title: 'WiFi en todo el predio',
-        text: 'Conectate desde la cabaña o desde el parque.',
-        pos: 'center 50%'
+        alt: 'Quincho techado con mesada y bancos en el predio de Cabañas Alcampo',
+        title: 'Quincho techado',
+        icon: 'quincho',
+        text: 'Pérgola con mesa y bancos para comer al aire libre, en el corazón del parque.',
+        pos: 'center 58%'
     },
     {
         src: '/images/complejo/ext-05.jpg',
-        alt: 'Fachada de cabaña entre árboles',
+        alt: 'Galería de cabaña con parrilla individual',
         title: 'Parrilla individual',
-        text: 'Cada cabaña tiene su propia parrilla.',
-        pos: 'center 42%'
-    },
-    {
-        src: '/images/complejo/ext-02.webp',
-        alt: 'Cabaña con vista a la sierra',
-        title: 'Mascotas',
-        text: 'Consultanos antes de reservar si venís con tu mascota.',
-        pos: 'center 60%'
+        icon: 'parrilla',
+        text: 'Tu propio asado: cada cabaña tiene su parrilla.',
+        pos: 'center 46%'
     }
+]
+
+/* Amenidades incluidas: chips sin foto. "Somos pet friendly" va al final. */
+export const serviciosIncluidos = [
+    { icon: 'wifi', label: 'WiFi en todo el predio' },
+    { icon: 'cocina', label: 'Cocina equipada' },
+    { icon: 'camas', label: 'Ropa de cama y toallas (con recambio)' },
+    { icon: 'aire', label: 'Aire acondicionado en dormitorios' },
+    { icon: 'fuego', label: 'Calefacción a gas en el living' },
+    { icon: 'ventilador', label: 'Ventiladores de techo' },
+    { icon: 'tv', label: 'TV satelital' },
+    { icon: 'cochera', label: 'Cochera cubierta' },
+    { icon: 'mascotas', label: 'Somos pet friendly', pet: true }
 ]
 
 export const occupiedDates = {

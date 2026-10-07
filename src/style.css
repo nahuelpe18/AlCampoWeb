@@ -840,7 +840,7 @@ section[id] {
 .cabanas__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 28px;
 }
 
 .cabana-card {
@@ -880,95 +880,156 @@ section[id] {
     opacity: 1;
 }
 
-.cabana-card__img {
+.cabana-card__media {
     position: relative;
-    height: 250px;
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    padding: 0;
+    border: none;
+    background: none;
     overflow: hidden;
+    cursor: pointer;
 }
 
-.cabana-card__img::after {
+.cabana-card__media::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(15, 38, 32, 0) 55%, rgba(15, 38, 32, 0.35) 100%);
+    background: linear-gradient(180deg, rgba(15, 38, 32, 0) 55%, rgba(15, 38, 32, 0.32) 100%);
     pointer-events: none;
 }
 
-.cabana-card__img img {
+.cabana-card__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     filter: saturate(1.05) contrast(1.02);
-    transition: transform 0.7s var(--ease-out);
+    transition: transform 0.75s var(--ease-out), filter 0.5s ease;
 }
 
-.cabana-card:hover .cabana-card__img img {
+.cabana-card:hover .cabana-card__media img,
+.cabana-card__media:focus-visible img {
     transform: scale(1.08);
+    filter: saturate(1.12) brightness(1.04);
+}
+
+.cabana-card__zoom {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    color: var(--blanco);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(8px) scale(0.9);
+    transition: opacity var(--transition), transform var(--transition), background var(--transition), border-color var(--transition);
+}
+
+.cabana-card:hover .cabana-card__zoom,
+.cabana-card__media:focus-visible .cabana-card__zoom {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    background: rgba(224, 200, 154, 0.42);
+    border-color: rgba(224, 200, 154, 0.7);
 }
 
 .cabana-card__content {
-    padding: 28px;
+    padding: 26px 28px 28px;
     display: flex;
     flex-direction: column;
     flex: 1;
+    gap: 12px;
 }
 
 .cabana-card__title {
     font-family: var(--font-heading);
-    font-size: 1.65rem;
+    font-size: 1.55rem;
     font-weight: 600;
+    line-height: 1.22;
+    letter-spacing: -0.012em;
     color: var(--verde-oscuro);
-    margin-bottom: 16px;
 }
 
-.cabana-card__details {
+.cabana-card__features {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 26px;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    margin-bottom: 10px;
 }
 
-.cabana-card__details span {
-    display: flex;
+.cabana-card__feature {
+    display: inline-flex;
     align-items: center;
-    gap: 11px;
-    font-size: 0.98rem;
+    gap: 7px;
+    padding: 7px 13px 7px 11px;
+    background: var(--crema-alta);
+    border: 1px solid rgba(22, 52, 44, 0.1);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-body);
+    font-size: 0.86rem;
+    font-weight: 500;
+    line-height: 1.3;
     color: var(--gris-medio);
+    transition: background var(--transition), border-color var(--transition), color var(--transition), translate var(--transition);
 }
 
-.cabana-card__details svg {
+.cabana-card:hover .cabana-card__feature {
+    background: var(--blanco);
+    border-color: rgba(201, 169, 110, 0.42);
+    color: var(--verde-oscuro);
+}
+
+.cabana-card__feature-icon {
+    display: inline-flex;
     color: var(--dorado-oscuro);
-    flex-shrink: 0;
 }
 
 .cabana-card__btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
+    align-self: flex-start;
     gap: 9px;
-    width: 100%;
-    min-height: 50px;
     margin-top: auto;
-    background: var(--crema-alta);
-    color: var(--verde-oscuro);
-    border: 1.5px solid rgba(22, 52, 44, 0.12);
-    border-radius: var(--radius-md);
+    min-height: 44px;
+    padding: 8px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
     font-family: var(--font-body);
-    font-size: 0.98rem;
-    font-weight: 600;
-    transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--dorado-oscuro);
+    transition: gap var(--transition), color var(--transition);
 }
 
-.cabana-card__btn:hover {
-    background: var(--verde-oscuro);
-    border-color: var(--verde-oscuro);
-    color: var(--blanco);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+.cabana-card__btn svg {
+    transition: transform var(--transition);
+}
+
+.cabana-card:hover .cabana-card__btn {
+    gap: 13px;
+    color: var(--dorado-oscuro);
+}
+
+.cabana-card:hover .cabana-card__btn svg {
+    transform: translateX(3px);
 }
 
 /* ========================================
-   EXPERIENCIA · bento
+   SERVICIOS · cards
    ======================================== */
 .experiencia {
     position: relative;
@@ -987,31 +1048,68 @@ section[id] {
     pointer-events: none;
 }
 
-.experiencia__grid {
+.servicios__grid {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 232px;
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
     margin-top: 44px;
 }
 
-.experiencia__item {
+.servicio-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.2);
+    transition: translate var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition);
+}
+
+.servicio-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(224, 200, 154, 0) 30%, rgba(224, 200, 154, 0.6) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--transition);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.servicio-card:hover,
+.servicio-card:focus-within {
+    translate: 0 -8px;
+    background: rgba(255, 255, 255, 0.085);
+    border-color: transparent;
+    box-shadow: 0 26px 56px rgba(0, 0, 0, 0.36);
+}
+
+.servicio-card:hover::before,
+.servicio-card:focus-within::before {
+    opacity: 1;
+}
+
+.servicio-card__media {
+    position: relative;
     display: block;
     width: 100%;
-    height: 100%;
+    aspect-ratio: 16 / 11;
     padding: 0;
     border: none;
     background: none;
-    border-radius: var(--radius-lg);
     overflow: hidden;
-    position: relative;
     cursor: pointer;
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
-    transition: box-shadow var(--transition), translate var(--transition);
 }
 
-.experiencia__item img {
+.servicio-card__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1019,77 +1117,188 @@ section[id] {
     transition: transform 0.75s var(--ease-out), filter 0.5s ease;
 }
 
-.experiencia__item:hover img,
-.experiencia__item:focus-visible img {
-    transform: scale(1.07);
-    filter: saturate(1.12) brightness(1.04);
+.servicio-card:hover .servicio-card__media img,
+.servicio-card__media:focus-visible img {
+    transform: scale(1.08);
+    filter: saturate(1.12) brightness(1.05);
 }
 
-.experiencia__item:hover,
-.experiencia__item:focus-visible {
-    translate: 0 -4px;
-    box-shadow: 0 0 0 1.5px rgba(224, 200, 154, 0.65), 0 22px 48px rgba(0, 0, 0, 0.34);
-}
-
-.experiencia__item--large {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-.experiencia__overlay {
+.servicio-card__media::after {
+    content: '';
     position: absolute;
     inset: 0;
-    padding: 26px;
+    background: linear-gradient(180deg, rgba(15, 38, 32, 0) 55%, rgba(15, 38, 32, 0.32) 100%);
+    pointer-events: none;
+}
+
+.servicio-card__zoom {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--blanco);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(8px) scale(0.9);
+    transition: opacity var(--transition), transform var(--transition), background var(--transition);
+}
+
+.servicio-card:hover .servicio-card__zoom,
+.servicio-card__media:focus-visible .servicio-card__zoom {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    background: rgba(224, 200, 154, 0.3);
+}
+
+.servicio-card__body {
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    gap: 6px;
-    background: linear-gradient(180deg, rgba(15, 38, 32, 0) 32%, rgba(15, 38, 32, 0.55) 68%, rgba(15, 38, 32, 0.88) 100%);
-    color: var(--blanco);
-    text-align: left;
+    flex: 1;
+    gap: 12px;
+    padding: 26px 28px 28px;
 }
 
-.experiencia__overlay-title {
+.servicio-card__icon {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-family: var(--font-heading);
-    font-size: 1.22rem;
-    font-weight: 600;
-    line-height: 1.25;
-    padding: 6px 14px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: var(--radius-pill);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    transition: background var(--transition), border-color var(--transition), color var(--transition);
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 17px;
+    background: rgba(224, 200, 154, 0.12);
+    border: 1px solid rgba(224, 200, 154, 0.3);
+    color: var(--dorado-claro);
+    transition: background var(--transition), border-color var(--transition), transform var(--transition);
 }
 
-.experiencia__overlay-text {
-    font-family: var(--font-body);
-    font-size: 0.94rem;
-    font-weight: 400;
-    line-height: 1.55;
-    color: rgba(255, 255, 255, 0.85);
-    max-width: 92%;
-    transform: translateY(4px);
-    opacity: 0.92;
-    transition: transform var(--transition), opacity var(--transition);
-}
-
-.experiencia__item:hover .experiencia__overlay-title,
-.experiencia__item:focus-visible .experiencia__overlay-title {
+.servicio-card:hover .servicio-card__icon {
     background: rgba(224, 200, 154, 0.22);
     border-color: rgba(224, 200, 154, 0.55);
+    transform: rotate(-5deg) scale(1.05);
+}
+
+.servicio-card__title {
+    font-family: var(--font-heading);
+    font-size: 1.45rem;
+    font-weight: 600;
+    line-height: 1.22;
+    letter-spacing: -0.012em;
+    color: var(--blanco);
+}
+
+.servicio-card__text {
+    font-family: var(--font-body);
+    font-size: 0.99rem;
+    line-height: 1.72;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.servicio-card__cta {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 9px;
+    margin-top: auto;
+    min-height: 44px;
+    padding: 8px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--dorado-claro);
+    transition: gap var(--transition);
+}
+
+.servicio-card__cta svg {
+    transition: transform var(--transition);
+}
+
+.servicio-card:hover .servicio-card__cta {
+    gap: 13px;
+}
+
+.servicio-card:hover .servicio-card__cta svg {
+    transform: translateX(3px);
+}
+
+.servicios__chips-title {
+    margin: 58px 0 22px;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
     color: var(--dorado-claro);
 }
 
-.experiencia__item:hover .experiencia__overlay-text,
-.experiencia__item:focus-visible .experiencia__overlay-text {
-    transform: translateY(0);
-    opacity: 1;
+.servicios__chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    list-style: none;
+}
+
+.servicio-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 18px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: rgba(255, 255, 255, 0.86);
+    transition: background var(--transition), border-color var(--transition), color var(--transition), translate var(--transition);
+}
+
+.servicio-chip:hover {
+    background: rgba(224, 200, 154, 0.14);
+    border-color: rgba(224, 200, 154, 0.42);
+    color: var(--blanco);
+    translate: 0 -2px;
+}
+
+.servicio-chip__icon {
+    display: inline-flex;
+    color: var(--dorado-claro);
+    flex-shrink: 0;
+}
+
+.servicio-chip__icon svg {
+    width: 17px;
+    height: 17px;
+}
+
+.servicio-chip--pet {
+    padding: 9px 15px;
+    font-size: 0.86rem;
+    background: rgba(224, 200, 154, 0.12);
+    border-color: rgba(224, 200, 154, 0.34);
+    color: var(--dorado-claro);
+}
+
+.servicio-chip--pet .servicio-chip__icon svg {
+    width: 15px;
+    height: 15px;
 }
 
 /* ========================================
@@ -1986,7 +2195,8 @@ section[id] {
 }
 
 .cabanas__grid.fade-in.visible > *,
-.experiencia__grid.fade-in.visible > *,
+.servicios__grid.fade-in.visible > *,
+.servicios__chips.fade-in.visible > *,
 .beneficios__grid.fade-in.visible > *,
 .ubicacion__grid.fade-in.visible > *,
 .contacto__channels.fade-in.visible > * {
@@ -1999,6 +2209,9 @@ section[id] {
 .fade-in.visible > *:nth-child(4) { animation-delay: 0.27s; }
 .fade-in.visible > *:nth-child(5) { animation-delay: 0.36s; }
 .fade-in.visible > *:nth-child(6) { animation-delay: 0.45s; }
+.fade-in.visible > *:nth-child(7) { animation-delay: 0.54s; }
+.fade-in.visible > *:nth-child(8) { animation-delay: 0.63s; }
+.fade-in.visible > *:nth-child(9) { animation-delay: 0.72s; }
 
 @keyframes reveal-up {
     from {
@@ -2065,13 +2278,15 @@ section[id] {
     .btn--outline:hover,
     .header__whatsapp:hover,
     .cabana-card:hover,
-    .cabana-card:hover .cabana-card__img img,
+    .cabana-card:hover .cabana-card__media img,
     .contacto__channel:hover,
     .contacto__channel-copy:hover,
     .footer__social a:hover,
     .whatsapp-float:hover,
-    .experiencia__item:hover,
-    .experiencia__item:hover img,
+    .servicio-card:hover,
+    .servicio-card:hover .servicio-card__media img,
+    .servicio-card:hover .servicio-card__icon,
+    .servicio-chip:hover,
     .beneficio:hover,
     .ubicacion__card:hover,
     .calendario__nav:hover,
@@ -2083,6 +2298,14 @@ section[id] {
     }
 
     .header__nav-link::after {
+        transition: none;
+    }
+
+    .servicio-card__zoom,
+    .servicio-card__cta svg,
+    .servicio-chip,
+    .cabana-card__zoom,
+    .cabana-card__btn svg {
         transition: none;
     }
 }
@@ -2115,18 +2338,9 @@ section[id] {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .experiencia__grid {
+    .servicios__grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 190px;
-    }
-
-    .experiencia__item--large {
-        grid-column: span 2;
-        grid-row: span 2;
-    }
-
-    .experiencia__item:last-child {
-        grid-column: span 2;
+        gap: 22px;
     }
 
     .ubicacion__grid {
@@ -2288,23 +2502,50 @@ section[id] {
         grid-template-columns: 1fr;
     }
 
-    .experiencia__grid {
+    .cabana-card__media {
+        aspect-ratio: 16 / 10;
+    }
+
+    .cabana-card__content {
+        padding: 22px 22px 24px;
+    }
+
+    .servicios__grid {
         grid-template-columns: 1fr;
-        grid-auto-rows: auto;
+        gap: 18px;
     }
 
-    .experiencia__item {
-        height: auto;
-        aspect-ratio: 4/3;
+    .servicio-card__media {
+        aspect-ratio: 16 / 10;
     }
 
-    .experiencia__item--large {
-        grid-column: span 1;
-        grid-row: span 1;
+    .servicio-card__body {
+        padding: 22px 22px 24px;
     }
 
-    .experiencia__item:last-child {
-        grid-column: span 1;
+    .servicios__chips-title {
+        margin: 42px 0 18px;
+        font-size: 0.72rem;
+        letter-spacing: 2.4px;
+    }
+
+    .servicios__chips {
+        gap: 9px;
+    }
+
+    .servicio-chip {
+        padding: 9px 14px;
+        font-size: 0.87rem;
+    }
+
+    .servicio-chip--pet {
+        padding: 7px 12px;
+        font-size: 0.81rem;
+    }
+
+    .servicio-chip--pet .servicio-chip__icon svg {
+        width: 14px;
+        height: 14px;
     }
 
     .ubicacion__actions .btn {
@@ -2354,6 +2595,24 @@ section[id] {
     .calendario-section,
     .contacto {
         padding: 76px 0;
+    }
+
+    .servicios__chips {
+        gap: 8px;
+    }
+
+    .servicio-chip {
+        padding: 8px 12px;
+        font-size: 0.83rem;
+    }
+
+    .servicio-chip--pet {
+        padding: 6px 11px;
+        font-size: 0.78rem;
+    }
+
+    .servicios__chips-title {
+        letter-spacing: 2px;
     }
 
     .calendario {
