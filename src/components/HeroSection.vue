@@ -11,14 +11,14 @@ import { WHATSAPP_DEFAULT } from '../data/site'
 
     <div class="hero__content">
       <p class="hero__location">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
           <circle cx="12" cy="10" r="3" />
         </svg>
         Villa General Belgrano · Córdoba
       </p>
 
-      <h1 class="hero__title">Viví la naturaleza y la paz en Villa General Belgrano.</h1>
+      <h1 class="hero__title">Viví la <em>naturaleza y la paz</em> en Villa General Belgrano.</h1>
 
       <p class="hero__subtitle">
         Descubrí nuestras cabañas en un predio de una hectárea con vista al Champaquí.
@@ -62,6 +62,11 @@ import { WHATSAPP_DEFAULT } from '../data/site'
         <strong>360°</strong>
         <span>de naturaleza</span>
       </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <span>Descubrí más</span>
+      <span class="hero__scroll-line"></span>
     </div>
   </section>
 </template>

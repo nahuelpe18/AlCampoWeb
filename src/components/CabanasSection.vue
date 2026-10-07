@@ -26,7 +26,7 @@ function openGallery(id) {
       <div class="cabanas__grid" v-reveal>
         <article v-for="cabana in cabanas" :key="cabana.id" class="cabana-card">
           <div class="cabana-card__img">
-            <img :src="cabana.image" :alt="cabana.title + ' - Cabañas Alcampo'" loading="lazy">
+            <img :src="cabana.image" :alt="cabana.title + ' - Cabañas Alcampo'" :style="{ objectPosition: cabana.pos }" loading="lazy">
           </div>
           <div class="cabana-card__content">
             <h3 class="cabana-card__title">{{ cabana.title }}</h3>

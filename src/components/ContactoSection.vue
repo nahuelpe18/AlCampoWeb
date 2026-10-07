@@ -106,7 +106,7 @@ onUnmounted(() => clearTimeout(copiedTimer))
     <div class="container">
       <div class="section-header section-header--center" v-reveal>
         <p class="section-label">CONTACTO</p>
-        <h2 class="section-title">Escribinos</h2>
+        <h2 class="section-title">Escribinos y <em>reservá tu estadía</em></h2>
         <p class="section-desc">
           Elegí el canal que prefieras o mandanos la consulta con el formulario.
           Respondemos por WhatsApp.
@@ -117,13 +117,11 @@ onUnmounted(() => clearTimeout(copiedTimer))
         <div class="contacto__panel">
           <p class="contacto__panel-title">Contacto directo</p>
 
-          <div class="contacto__channels">
+          <div class="contacto__channels" v-reveal>
             <div
-              v-for="(channel, index) in contactChannels"
+              v-for="channel in contactChannels"
               :key="channel.id"
               class="contacto__channel"
-              v-reveal
-              :style="{ transitionDelay: `${index * 80}ms` }"
             >
               <span class="contacto__channel-icon">
                 <svg v-if="channel.kind === 'whatsapp'" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

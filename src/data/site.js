@@ -60,7 +60,7 @@ export const contactChannels = [
 export const navLinks = [
     { href: '#inicio', label: 'Inicio' },
     { href: '#cabanas', label: 'Cabañas' },
-    { href: '#experiencia-servicios', label: 'Experiencia y Servicios' },
+    { href: '#experiencia-servicios', label: 'Servicios' },
     { href: '#ubicacion', label: 'Ubicación' },
     { href: '#calendario', label: 'Fechas' },
     { href: '#contacto', label: 'Contacto' }
@@ -92,30 +92,73 @@ export const cabanas = [
         title: 'Cabaña 1',
         image: cabanaGalleries[1][0].src,
         people: 'Hasta 4 personas',
-        rooms: '2 dormitorios'
+        rooms: '2 dormitorios',
+        pos: 'center 42%'
     },
     {
         id: 2,
         title: 'Cabaña 2',
         image: cabanaGalleries[2][0].src,
         people: 'Hasta 4 personas',
-        rooms: '2 dormitorios'
+        rooms: '2 dormitorios',
+        pos: 'center 55%'
     },
     {
         id: 3,
         title: 'Cabaña 3',
         image: cabanaGalleries[3][0].src,
         people: 'Hasta 3 personas',
-        rooms: '1 dormitorio'
+        rooms: '1 dormitorio',
+        pos: 'center 50%'
     }
 ]
 
-export const complejoGallery = [
-    { src: '/images/complejo/ext-04.jpg', alt: 'Vista panorámica de Cabañas Alcampo' },
-    { src: '/images/complejo/ext-02.webp', alt: 'Piscina de Cabañas Alcampo' },
-    { src: '/images/complejo/ext-03.webp', alt: 'Pérgola y zona de descanso' },
-    { src: '/images/complejo/ext-01.webp', alt: 'Parque y juegos infantiles' },
-    { src: '/images/complejo/ext-05.jpg', alt: 'Fachada de cabaña' }
+/* Sección unificada Experiencia + Servicios: cada foto lleva encima
+   el título y texto del servicio que representa. */
+export const experienciaServicios = [
+    {
+        src: '/images/complejo/ext-01.webp',
+        alt: 'Parque arbolado de Cabañas Alcampo con juegos infantiles',
+        title: 'Parque de 1 hectárea',
+        text: 'Mucho espacio verde para jugar y descansar.',
+        pos: 'center 45%',
+        large: true
+    },
+    {
+        src: '/images/hero.jpg',
+        alt: 'Piscina de Cabañas Alcampo',
+        title: 'Pileta',
+        text: 'Para pasar el rato en verano, con agua para grandes y chicos.',
+        pos: 'center 72%'
+    },
+    {
+        src: '/images/cabana-1/int-01.webp',
+        alt: 'Dormitorio de cabaña con la cama puesta',
+        title: 'Ropa de cama y toallas',
+        text: 'Llegás con las camas puestas y toallas limpias.',
+        pos: 'center 55%'
+    },
+    {
+        src: '/images/complejo/ext-03.webp',
+        alt: 'Pérgola y zona de descanso',
+        title: 'WiFi en todo el predio',
+        text: 'Conectate desde la cabaña o desde el parque.',
+        pos: 'center 50%'
+    },
+    {
+        src: '/images/complejo/ext-05.jpg',
+        alt: 'Fachada de cabaña entre árboles',
+        title: 'Parrilla individual',
+        text: 'Cada cabaña tiene su propia parrilla.',
+        pos: 'center 42%'
+    },
+    {
+        src: '/images/complejo/ext-02.webp',
+        alt: 'Cabaña con vista a la sierra',
+        title: 'Mascotas',
+        text: 'Consultanos antes de reservar si venís con tu mascota.',
+        pos: 'center 60%'
+    }
 ]
 
 export const occupiedDates = {

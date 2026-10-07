@@ -1,34 +1,36 @@
 <script setup>
-import { complejoGallery } from '../data/site'
+import { experienciaServicios } from '../data/site'
 import { useLightbox } from '../composables/useLightbox'
 
 const { open } = useLightbox()
-
-/* Misma fuente que abre el lightbox: sin duplicar el contenido */
-const items = complejoGallery.map((img, i) => ({ ...img, large: i === 0 }))
 </script>
 
 <template>
   <section class="experiencia">
     <div class="container">
-      <div class="section-header" v-reveal>
-        <p class="section-label section-label--light">EL LUGAR IDEAL PARA TUS VACACIONES</p>
-        <h2 class="section-title section-title--light">Villa General Belgrano, Córdoba</h2>
+      <div class="section-header section-header--center" v-reveal>
+        <p class="section-label section-label--light">SERVICIOS</p>
+        <h2 class="section-title section-title--light">Todo lo que necesitás para <em>disfrutar en familia</em></h2>
+        <p class="section-desc section-desc--light">
+          Estos son los servicios incluidos en tu estadía.
+          Todo está listo para que solo te preocupes por descansar.
+        </p>
       </div>
 
       <div class="experiencia__grid" v-reveal>
         <button
-          v-for="(item, index) in items"
+          v-for="(item, index) in experienciaServicios"
           :key="item.src"
           type="button"
           class="experiencia__item"
           :class="{ 'experiencia__item--large': item.large }"
-          :aria-label="'Ver foto: ' + item.alt"
-          @click="open(complejoGallery, index)"
+          :aria-label="'Ver foto: ' + item.title"
+          @click="open(experienciaServicios, index)"
         >
-          <img :src="item.src" :alt="item.alt" loading="lazy">
-          <span v-if="item.large" class="experiencia__overlay">
-            <span>El lugar ideal<br>para tus vacaciones</span>
+          <img :src="item.src" :alt="item.alt" :style="{ objectPosition: item.pos }" loading="lazy">
+          <span class="experiencia__overlay">
+            <span class="experiencia__overlay-title">{{ item.title }}</span>
+            <span class="experiencia__overlay-text">{{ item.text }}</span>
           </span>
         </button>
       </div>

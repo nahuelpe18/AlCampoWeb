@@ -157,7 +157,7 @@ function dayLabel(day) {
     <div class="container">
       <div class="section-header section-header--center" v-reveal>
         <p class="section-label">DISPONIBILIDAD</p>
-        <h2 class="section-title">Consultá las fechas disponibles</h2>
+        <h2 class="section-title">Consultá las <em>fechas disponibles</em></h2>
         <p class="section-desc">
           Elegí las fechas de tu estadía y consultá disponibilidad por WhatsApp.
         </p>

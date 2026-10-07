@@ -4,7 +4,6 @@ import HeroSection from './components/HeroSection.vue'
 import BeneficiosSection from './components/BeneficiosSection.vue'
 import CabanasSection from './components/CabanasSection.vue'
 import ExperienciaSection from './components/ExperienciaSection.vue'
-import ServiciosSection from './components/ServiciosSection.vue'
 import UbicacionSection from './components/UbicacionSection.vue'
 import CalendarioSection from './components/CalendarioSection.vue'
 import ContactoSection from './components/ContactoSection.vue'
@@ -21,7 +20,6 @@ import WhatsAppFloat from './components/WhatsAppFloat.vue'
     <BeneficiosSection />
     <CabanasSection />
     <section id="experiencia-servicios" aria-label="Experiencia y Servicios">
-      <ServiciosSection />
       <ExperienciaSection />
     </section>
     <UbicacionSection />
